@@ -1,0 +1,36 @@
+#Python Practice. I spent sooooo much time figuring out this silly set-to list- to set practice problem
+M = set()
+N = set()          #Initialize sets
+
+print("please input how many numbers you want in set M: ")
+a = int(input())
+print("please enter", a, "numbers you want in set M separated by a space: ")
+x1 = input()
+x2 = x1.split()                          
+x3 = list(map(int, x2))        #converts raw input into an iterable format
+
+for x in range(a):
+    M.add(x3[x])                #Then adds to set
+
+
+print("please input how many numbers you want in set N: ")
+b = int(input())
+print("please enter", b, "numbers you want in set N separated by a space: ")
+y1 = input()
+y2 = y1.split()
+y3 = list(map(int, y2))
+
+for x in range(b):
+    N.add(y3[x])                  #Do it again
+
+newset = M.symmetric_difference(N)    #Compares sets, converts back to list, sorts list...
+newlis = list(newset)
+stor = sorted(newlis)
+
+for x in range(len(stor)):
+    print(stor[x])                    #Then prints!
+
+"""
+References
+W3, HackerRank
+"""
