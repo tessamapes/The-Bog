@@ -30,6 +30,19 @@ stor = sorted(newlis)
 for x in range(len(stor)):
     print(stor[x])                    #Then prints!
 
+#Anotha one. This one was a pain in the butt because I was thinkin in Java. I didn't know Python had a counter
+def unique_count(string):            #I define a new funtion to count the elements in a string
+   x = string
+   D = dict() 
+   for char in x:
+    inx = int(x.count(char))            #Very elegant solution compared to nesting loops for lists
+    D[char] = inx
+
+   print(D) 
+    
+x = input()
+unique_count(x)
+
 """
 References
 W3, HackerRank
