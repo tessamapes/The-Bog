@@ -1,3 +1,4 @@
+"""
 #Python Practice. I spent sooooo much time figuring out this silly set-to list- to set practice problem
 M = set()
 N = set()          #Initialize sets
@@ -29,7 +30,8 @@ stor = sorted(newlis)
 
 for x in range(len(stor)):
     print(stor[x])                    #Then prints!
-
+"""
+"""
 #Anotha one. This one was a pain in the butt because I was thinkin in Java. I didn't know Python had a counter
 def unique_count(string):            #I define a new funtion to count the elements in a string
    x = string
@@ -42,8 +44,65 @@ def unique_count(string):            #I define a new funtion to count the elemen
     
 x = input()
 unique_count(x)
+"""
+"""
+#A really good one
+def convert_list(num, IOtextwrapper):    #This function takes a .csv file and makes it useable
+    L = list()
+    M = list()
+    n = num
+    index = 0
+    for x in IOtextwrapper:                #I take the file, split it by commas, read only the column I want, and append it to a list
+       h = x.split(",")
+       L.append(h[n::n])
+    L.pop(0)                               #and I pop the header. Very important step
+    for x in L:                            #Next I take the list, strip out unnessisary stuff
+        T = x[index].strip('"\n')
+        M.append(T)                        #I had to append it to a new list because the objects were stored = [['"like"'],['"this"']]
+        index+1
+    N = list(map(int, M))                   #Convert the list objects into ints
+    return(N)                                #return list of ints
+
+def average(P):                            #This function returns the average, varience, and standard deviation
+    L = P
+    M = list()
+    S = 0
+    n = len(L)
+    for i in L:                            #average is all the instances summed, then divided by the total of instances
+        S = S+i
+    a = int(S/n)
+
+    #varience                
+    for x in L:                               #varience takes the average of the population, takes the difference of each instance against the mean
+        q = (x - a)**2                        #squares it
+        M.append(q)
+    S = 0
+    for x in M:                                #Then takes the average of those^ instances 
+        S = S+x
+    v = int(S/n)    
+    
+    #standard deviation                        #Standard deviation is just the square root of the varience. cleaver on raising the varience to a decimal,
+    s = int(v**.5)                             #GeeksforGeeks reminded me about raising variables by fractions. thx G4G
+    return(a,v,s)
+
+def open_file(file, column):                    #This funtion fixes the problem of the file closing after reading one column. It just opens it for each instance
+    file = str(file)                            #Not the most efficent, but I figured it out with my own brain so I'm proud of myself.
+    column = int(column)
+    with open(file) as heck:
+        N = convert_list(column, heck)
+        O = average(N)
+
+    return(O)
+
+F = str(r"C:\Users\Tessa\OneDrive\Desktop\CSCI 3603\StudentsPerformance.csv")    #The main function calls the other functions and prints out pretty statements for readability
+    
+print("The average of the Math score is:", open_file(F,5))
+print("The average of the Reading score is:", open_file(F,6))
+print("The average of the Writing score is:", open_file(F,7))
+"""
+
 
 """
 References
-W3, HackerRank
+W3, HackerRank, GeeksforGeeks
 """
