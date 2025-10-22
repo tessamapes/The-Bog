@@ -94,7 +94,7 @@ def open_file(file, column):                    #This funtion fixes the problem 
 
     return(O)
 
-F = str(r"C:\Users\Tessa\OneDrive\Desktop\CSCI 3603\StudentsPerformance.csv")    #The main function calls the other functions and prints out pretty statements for readability
+F = str(r"[direct file location]")    #The main function calls the other functions and prints out pretty statements for readability
     
 print("The average of the Math score is:", open_file(F,5))
 print("The average of the Reading score is:", open_file(F,6))
